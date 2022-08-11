@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');*{
+  font-family: 'Nunito', sans-serif;
+}
+.night {
+  background-color: #092c3e;
+  transition: ease-in 0.2s;
+}
+
+.hide {
+  display: none;
+}
+
+.body {
+  transition: ease-in 0.2s;
+}
+
+.navbar {
+  min-height: 70px;
+  width: 100%;
+  background-color: #f8f9fa;
+  box-shadow: 0px 2px 2px 0px rgba(1, 1, 1, 0.1);
+  transition: ease-in 0.2s;
+  position: fixed;
+}
+
+.night .navbar {
+  background-color: #3d4353;
+  transition: ease-in 0.2s;
+}
+
+.navbar-brand {
+  color: black;
+}
+
+.navbar-brand:hover{
+  color: black;
+}
+
+.night .navbar .navbar-brand {
+  color: #fff;
+}
+
+.theme {
+  display: flex;
+  justify-content: center;
+}
+
+.icon_check {
+  -webkit-appearance: none;
+  display: none;
+  visibility: hidden;
+}
+
+.theme_icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 60px;
+  height: 30px;
+  background-color: #092c3e;
+  cursor: pointer;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: ease-in 0.2s;
+  color: transparent;
+}
+.icon_check:checked ~ .theme_icon {
+  background-color: #fff;
+}
+
+.theme_icon:before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background-color: #f8f9fa;
+  border-radius: 50%;
+  left: 5px;
+  transition: ease-in 0.2s;
+}
+
+.icon_check:checked ~ .theme_icon:before {
+  transform: translateX(30px);
+  background-color: #092c3e;
+}
+
+.night .userNameBody{
+  color: #fff;
+}
+
+.register {
+  height: 90vh;
+  align-items: center;
+}
+
+.userName,
+.joinBtn {
+  height: 50px;
+  box-shadow: 0px 0px 5px 0px rgba(1, 1, 1, 0.1);
+  transition: ease-in 0.2s;
+}
+
+.userName:focus,
+.joinBtn:focus {
+  box-shadow: 0px 0px 10px 0px rgba(1, 1, 1, 0.1);
+}
+
+.night .userName {
+  background-color: #3d4353;
+  transition: ease-in 0.2s;
+  color: #fff;
+}
+.night .joinBtn {
+  background-color: #475a6f;
+  transition: ease-in 0.2s;
+  color: #fff;
+}
+
+.box {
+  min-height: 90vh;
+}
+
+.msgBox {
+  height: 500px;
+  padding: 20px;
+  background-color: #fff;
+  overflow: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  box-shadow: 0px 0px 15px 0px rgba(1, 1, 1, 0.1);
+  transition: ease-in 0.2s;
+}
+
+.night .msgBox {
+  background-color: #475a6f;
+}
+
+/* .msgData{
+
+} */
+
+.notification{
+  text-align: center;
+  color: gray;
+  margin: 10px 0px;
+  font-size: 0.8rem;
+}
+
+.night .notification{
+  color: #e4e6eb;
+}
+
+.myChat{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  max-height: fit-content;
+  width: fit-content;
+  max-width: 80%;
+  margin: 10px 0px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #0084ff;
+  color: #fff;
+}
+
+.name{
+  font-size: 0.8rem;
+  margin: 20px 0px 0px 45px;
+}
+
+.night .name{
+  color: #fff;
+}
+
+.otherChat{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  max-height: fit-content;
+  width: fit-content;
+  max-width: 80%;
+  margin-left: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background-color: #e4e6eb;
+  color: #000;
+}
+
+.userLogo{
+  display: flex;
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  border-radius: 50%;
+  justify-content: center;
+  background-color: #0084ff;
+  color: #fff;
+}
+
+.chatBox {
+  background-color: #f8f9fa;
+  box-shadow: 0px 5px 5px 0px rgba(1, 1, 1, 0.1);
+  transition: ease-in 0.2s;
+}
+
+.night .chatBox {
+  background-color: #3d4353;
+}
+
+.typingArea {
+  height: 50px;
+  background-color: #f8f9fa;
+  transition: ease-in 0.2s;
+}
+
+.night .typingArea {
+  background-color: #3d4353;
+  color: #fff;
+}
+
+.typingArea:focus {
+  box-shadow: none;
+  background-color: #f8f9fa;
+}
+
+.night .typingArea:focus {
+  background-color: #3d4353;
+}
+
+.sendBtn:focus{
+  box-shadow: none;
+}
+
+.night .sendBtn {
+  background-color: #475a6f;
+}
+
+.night i{
+  color: #fff;
+}
