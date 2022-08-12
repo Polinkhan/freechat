@@ -58,10 +58,10 @@ $(document).ready(function () {
   });
 
   socket.on("user-joined", (userName) => {
-    notification(userName,"joined");
+    if (userName) notification(userName, "joined");
   });
   socket.on("userLeave", (userName) => {
-    notification(userName,"left");
+    if (userName) notification(userName, "left");
   });
 
   socket.on("userIsTyping", (user, id, userData) => {
