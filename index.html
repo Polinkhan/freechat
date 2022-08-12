@@ -19,6 +19,10 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./css/style.css" />
+    <!-- <script
+      src="http://localhost:8000/socket.io/socket.io.js"
+      defer
+    ></script> -->
     <script
       src="https://galaxychat.herokuapp.com/socket.io/socket.io.js"
       defer
@@ -43,7 +47,7 @@
       </div>
     </nav>
 
-    <div class="container regField">
+    <div class="container regField hide">
       <div class="register row">
         <form action="" onsubmit="return false" id="registry">
           <div class="row justify-content-center gx-0">
@@ -67,20 +71,21 @@
       </div>
     </div>
 
-    <div class="container chatField hide">
+    <div class="container chatField ">
       <div class="box row mx-auto flex-column justify-content-center">
         <div class="msgBox col-lg-6 col-md-10 col-12 mx-auto">
           <div class="msgData row justify-content-center"></div>
         </div>
         <div class="chatBox col-lg-6 col-md-10 mx-auto">
+          <div class="typingIndicator"></div>
           <form action="" onsubmit="return false" name="chat" class="row">
-            <div class="col-2 my-auto text-center">
-              <i class="fa-solid fa-image"></i>
+            <div class="col-2 my-auto icon p-0">
+              <i class="fa-solid fa-image imgLogo"></i>
             </div>
             <div class="col-8">
               <input
                 type="text"
-                class="typingArea form-control w-100 border-0 rounded-0"
+                class="typingArea form-control w-100 border-0 rounded-0 p-0 m-0"
               />
             </div>
             <div class="col-2 my-auto">

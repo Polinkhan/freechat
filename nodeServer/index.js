@@ -17,4 +17,12 @@ io.on("connection", (socket) => {
       name: user[socket.id],
     });
   });
+
+  socket.on("typing",(name)=>{
+    socket.broadcast.emit("userIsTyping",name);
+  })
+
+  socket.on("stopTyping",(name)=>{
+    socket.broadcast.emit("userStopedTyping",name);
+  })
 });

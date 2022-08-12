@@ -26,9 +26,21 @@ $(document).ready(function () {
     socket.emit("new-user-joined", userName);
   });
 
+  $(".typingArea").keyup(function (e) {
+    if(e.key == "enter"){
+      socket.emit("stopTyping", userName);
+    }
+    else if ($(".typingArea").val()) {
+      socket.emit("typing", userName);
+    } else {
+      socket.emit("stopTyping", userName);
+    }
+  });
+
   $(".sendBtn").click(function () {
     appendMyChat($(".typingArea").val());
 
+    socket.emit("stopTyping", userName);
     socket.emit("send", $(".typingArea").val());
 
     $(".typingArea").val("");
@@ -42,7 +54,16 @@ $(document).ready(function () {
       scrollDown();
     }
   });
-  socket.on("user-joined",(userName)=>{
+
+  socket.on("user-joined", (userName) => {
     notification(userName);
-  })
+  });
+
+  socket.on("userIsTyping", (userName) => {
+    $(".typingIndicator").text(userName+" is typing")
+  });
+
+  socket.on("userStopedTyping", (userName) => {
+    $(".typingIndicator").text("")
+  });
 });
