@@ -76,7 +76,7 @@ $(document).ready(function () {
     typerId.splice(typerId.indexOf(id), 1);
     typerName.splice(typerName.indexOf(userData[id]), 1);
 
-    if (typerName.length) $(".typingIndicator").text(typerName + ` is typing <img class="typingGif" src="./assets/dots.gif">`);
+    if (typerName.length) $(".typingIndicator").html(typerName + ` is typing <img class="typingGif" src="./assets/dots.gif">`);
     else $(".typingIndicator").text("");
   });
 });
