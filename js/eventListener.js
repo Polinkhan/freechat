@@ -16,21 +16,23 @@ $(document).ready(function () {
     }
   });
 
+  $(".chatField").fadeOut();
   $("#registry").submit(function () {
     userName = $(".userName").val();
     if (!userName) userName = "Anonymous";
-    $(".regField").addClass("hide");
-    $(".chatField").removeClass("hide");
+    $(".regField").fadeOut("swing",()=>{
+      $(".chatField").fadeIn("swing",);
+    });
+    
     $(".userNameBody").text(userName);
 
     socket.emit("new-user-joined", userName);
   });
 
   $(".typingArea").keyup(function (e) {
-    if(e.key == "enter"){
+    if (e.key == "enter") {
       socket.emit("stopTyping", userName);
-    }
-    else if ($(".typingArea").val()) {
+    } else if ($(".typingArea").val()) {
       socket.emit("typing", userName);
     } else {
       socket.emit("stopTyping", userName);
@@ -60,10 +62,10 @@ $(document).ready(function () {
   });
 
   socket.on("userIsTyping", (userName) => {
-    $(".typingIndicator").text(userName+" is typing...")
+    $(".typingIndicator").text(userName + " is typing...");
   });
 
   socket.on("userStopedTyping", (userName) => {
-    $(".typingIndicator").text("")
+    $(".typingIndicator").text("");
   });
 });

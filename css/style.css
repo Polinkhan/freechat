@@ -1,26 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');*{
-  font-family: 'Nunito', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+* {
+  font-family: "Nunito", sans-serif;
 }
 .night {
   background-color: #092c3e;
   transition: ease-in 0.2s;
 }
 
-.hide {
-  display: none;
-}
-
 .body {
   transition: ease-in 0.2s;
+  overflow: hidden;
 }
 
 .navbar {
-  min-height: 70px;
+  min-height: 8vh;
   width: 100%;
   background-color: #f8f9fa;
   box-shadow: 0px 2px 2px 0px rgba(1, 1, 1, 0.1);
   transition: ease-in 0.2s;
-  position: fixed;
+  position: sticky;
 }
 
 .night .navbar {
@@ -32,7 +30,7 @@
   color: black;
 }
 
-.navbar-brand:hover{
+.navbar-brand:hover {
   color: black;
 }
 
@@ -84,7 +82,7 @@
   background-color: #092c3e;
 }
 
-.night .userNameBody{
+.night .userNameBody {
   color: #fff;
 }
 
@@ -117,11 +115,11 @@
 }
 
 .box {
-  min-height: 90vh;
+  min-height: 85vh;
 }
 
 .msgBox {
-  height: 500px;
+  height: 70vh;
   padding: 20px;
   background-color: #fff;
   overflow: scroll;
@@ -139,18 +137,18 @@
 
 } */
 
-.notification{
+.notification {
   text-align: center;
   color: gray;
   margin: 10px 0px;
   font-size: 0.8rem;
 }
 
-.night .notification{
+.night .notification {
   color: #e4e6eb;
 }
 
-.myChat{
+.myChat {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -167,16 +165,16 @@
   color: #fff;
 }
 
-.name{
+.name {
   font-size: 0.8rem;
   margin: 20px 0px 0px 45px;
 }
 
-.night .name{
+.night .name {
   color: #fff;
 }
 
-.otherChat{
+.otherChat {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -193,7 +191,7 @@
   color: #000;
 }
 
-.userLogo{
+.userLogo {
   display: flex;
   height: 40px;
   width: 40px;
@@ -211,7 +209,7 @@
   position: relative;
 }
 
-.typingIndicator{
+.typingIndicator {
   color: gray;
   font-size: 0.8rem;
   position: absolute;
@@ -219,7 +217,7 @@
   right: 30px;
 }
 
-.night .typingIndicator{
+.night .typingIndicator {
   color: #c5c5c5;
 }
 
@@ -227,7 +225,7 @@
   background-color: #3d4353;
 }
 
-.icon{
+.icon {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -253,7 +251,7 @@
   background-color: #3d4353;
 }
 
-.sendBtn:focus{
+.sendBtn:focus {
   box-shadow: none;
 }
 
@@ -261,6 +259,26 @@
   background-color: #475a6f;
 }
 
-.night i{
+.night i {
   color: #fff;
+}
+
+footer{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer a{
+  font-size: 1.5rem;
+  margin: 0px 50px;
+  color: gray;
+}
+
+footer i:hover{
+  color: rgb(48, 48, 48);
 }

@@ -31,20 +31,18 @@
   </head>
   <body class="body">
     <nav class="navbar">
-      <div class="container">
-        <div class="container-fluid col-4">
-          <a class="navbar-brand" href="index.html">
+        <div class="container-fluid col-4 ">
+          <a class="navbar-brand mx-auto" href="index.html">
             <span class="fw-bold">Free</span>chat
           </a>
         </div>
-        <div class="col-4 text-center text-capitalize userNameBody"></div>
+        <div class="col-4 text-capitalize userNameBody text-center"></div>
         <div class="theme col-4">
           <label>
             <input type="checkbox" class="icon_check" />
             <span class="theme_icon"></span>
           </label>
         </div>
-      </div>
     </nav>
 
     <div class="container regField">
@@ -71,24 +69,24 @@
       </div>
     </div>
 
-    <div class="container chatField hide">
+    <div class="container chatField">
       <div class="box row mx-auto flex-column justify-content-center">
-        <div class="msgBox col-lg-6 col-md-10 col-12 mx-auto">
+        <div class="msgBox col-lg-10 col-12 mx-auto">
           <div class="msgData row justify-content-center"></div>
         </div>
-        <div class="chatBox col-lg-6 col-md-10 mx-auto">
+        <div class="chatBox col-lg-10 col-12 mx-auto">
           <div class="typingIndicator"></div>
           <form action="" onsubmit="return false" name="chat" class="row">
-            <div class="col-2 my-auto icon p-0">
+            <div class="col-lg-1 col-2 my-auto icon p-0">
               <i class="fa-solid fa-image imgLogo"></i>
             </div>
-            <div class="col-8">
+            <div class="col">
               <input
                 type="text"
                 class="typingArea form-control w-100 border-0 rounded-0 p-0 m-0"
               />
             </div>
-            <div class="col-2 my-auto">
+            <div class="col-lg-1 col-2 my-auto">
               <button
                 type="submit"
                 class="btn btn-warning sendBtn border-0 w-100"
@@ -100,6 +98,17 @@
         </div>
       </div>
     </div>
+
+    <footer>
+      <div class="footerIcon">
+        <a href="https://github.com/polinkhan"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.facebook.com/abusayedpolin"><i class="fa-brands fa-square-facebook"></i></a>
+        <a href="https://linkedin.com/in/abusayedpolin"><i class="fa-brands fa-linkedin"></i></a>
+        
+        
+        
+      </div>
+    </footer>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
