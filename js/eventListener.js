@@ -60,7 +60,7 @@ $(document).ready(function () {
   });
 
   socket.on("userIsTyping", (userName) => {
-    $(".typingIndicator").text(userName+" is typing")
+    $(".typingIndicator").text(userName+" is typing...")
   });
 
   socket.on("userStopedTyping", (userName) => {
