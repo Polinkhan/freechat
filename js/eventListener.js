@@ -11,7 +11,7 @@ $(document).ready(function () {
   let typerId = [];
   let typerName = [];
 
-  $(".chatField").fadeOut();
+  $(".chatField").fadeOut(0);
 
   $(".theme_icon").click(function () {
     if (!$(".icon_check").is(":checked")) $(".body").addClass("night");
@@ -58,7 +58,10 @@ $(document).ready(function () {
   });
 
   socket.on("user-joined", (userName) => {
-    notification(userName);
+    notification(userName,"joined");
+  });
+  socket.on("userLeave", (userName) => {
+    notification(userName,"left");
   });
 
   socket.on("userIsTyping", (user, id, userData) => {
@@ -66,7 +69,7 @@ $(document).ready(function () {
       typerId.push(id);
       typerName.push(userData[id]);
     }
-    if (typerName.length) $(".typingIndicator").text(typerName + " is typing...");
+    if (typerName.length) $(".typingIndicator").html(typerName + ` is typing <img class="typingGif" src="./assets/dots.gif">`);
   });
 
   socket.on("userStopedTyping", (id, userData) => {

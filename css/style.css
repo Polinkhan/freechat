@@ -222,6 +222,17 @@
   font-size: 0.8rem;
 }
 
+.typingGif {
+  height: 15px;
+  border-radius: 30px;
+  background-color: #e4e6eb;
+}
+
+.night .typingGif {
+  background-color: #c5c5c5;
+  border-radius: 30px;
+}
+
 .night .notification {
   color: #e4e6eb;
 }
@@ -234,13 +245,38 @@
   max-height: fit-content;
   width: fit-content;
   max-width: 80%;
-  margin: 10px 0px;
+  margin: 10px 0px 0px;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   background-color: #0084ff;
   color: #fff;
+}
+
+.time {
+  display: flex;
+  justify-content: end;
+  padding-right: 5px;
+  align-items: center;
+  font-size: 0.6rem;
+  color: gray;
+}
+.otherTime {
+  display: flex;
+  justify-content: start;
+  margin-left: 55px;
+  align-items: center;
+  font-size: 0.6rem;
+  color: gray;
+}
+
+.night .time {
+  color: #e4e6eb;
+}
+
+.night .otherTime {
+  color: #e4e6eb;
 }
 
 .name {
