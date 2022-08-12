@@ -1,4 +1,5 @@
 import { appendMyChat, appendOtherChat, notification } from "./append.js";
+import { getRandomUserName } from "./data.js";
 import { socket } from "./cliant.js";
 
 let scrollDown = () => {
@@ -7,36 +8,35 @@ let scrollDown = () => {
 
 $(document).ready(function () {
   let userName;
-
-  $(".theme_icon").click(function () {
-    if (!$(".icon_check").is(":checked")) {
-      $(".body").addClass("night");
-    } else {
-      $(".body").removeClass("night");
-    }
-  });
+  let typerId = [];
+  let typerName = [];
 
   $(".chatField").fadeOut();
+
+  $(".theme_icon").click(function () {
+    if (!$(".icon_check").is(":checked")) $(".body").addClass("night");
+    else $(".body").removeClass("night");
+  });
+
   $("#registry").submit(function () {
     userName = $(".userName").val();
     if (!userName) userName = "Anonymous";
-    $(".regField").fadeOut("swing",()=>{
-      $(".chatField").fadeIn("swing",);
+    $(".fa-circle").removeClass("hide");
+    $(".userNameBody").html(userName);
+    $(".regField").fadeOut("swing", () => {
+      $(".chatField").fadeIn("swing");
     });
-    
-    $(".userNameBody").text(userName);
-
     socket.emit("new-user-joined", userName);
   });
 
+  $(".shuffle").click(function () {
+    $(".userName").val(getRandomUserName());
+  });
+
   $(".typingArea").keyup(function (e) {
-    if (e.key == "enter") {
-      socket.emit("stopTyping", userName);
-    } else if ($(".typingArea").val()) {
-      socket.emit("typing", userName);
-    } else {
-      socket.emit("stopTyping", userName);
-    }
+    if (e.key == "enter") socket.emit("stopTyping", userName);
+    else if ($(".typingArea").val()) socket.emit("typing", userName);
+    else socket.emit("stopTyping", userName);
   });
 
   $(".sendBtn").click(function () {
@@ -61,11 +61,19 @@ $(document).ready(function () {
     notification(userName);
   });
 
-  socket.on("userIsTyping", (userName) => {
-    $(".typingIndicator").text(userName + " is typing...");
+  socket.on("userIsTyping", (user, id, userData) => {
+    if (!typerId.includes(id)) {
+      typerId.push(id);
+      typerName.push(userData[id]);
+    }
+    if (typerName.length) $(".typingIndicator").text(typerName + " is typing...");
   });
 
-  socket.on("userStopedTyping", (userName) => {
-    $(".typingIndicator").text("");
+  socket.on("userStopedTyping", (id, userData) => {
+    typerId.splice(typerId.indexOf(id), 1);
+    typerName.splice(typerName.indexOf(userData[id]), 1);
+
+    if (typerName.length) $(".typingIndicator").text(typerName + " is typing...");
+    else $(".typingIndicator").text("");
   });
 });

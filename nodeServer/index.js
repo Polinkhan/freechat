@@ -18,11 +18,11 @@ io.on("connection", (socket) => {
     });
   });
 
-  socket.on("typing",(name)=>{
-    socket.broadcast.emit("userIsTyping",name);
-  })
+  socket.on("typing", (name) => {
+    socket.broadcast.emit("userIsTyping", name, socket.id, user);
+  });
 
-  socket.on("stopTyping",(name)=>{
-    socket.broadcast.emit("userStopedTyping",name);
-  })
+  socket.on("stopTyping", (name) => {
+    socket.broadcast.emit("userStopedTyping", socket.id, user);
+  });
 });

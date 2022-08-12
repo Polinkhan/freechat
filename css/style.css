@@ -2,9 +2,18 @@
 * {
   font-family: "Nunito", sans-serif;
 }
+
+.hide {
+  display: none;
+}
+
 .night {
   background-color: #092c3e;
   transition: ease-in 0.2s;
+}
+
+.night i {
+  color: #f8f9fa;
 }
 
 .body {
@@ -36,6 +45,53 @@
 
 .night .navbar .navbar-brand {
   color: #fff;
+}
+
+.fa-circle {
+  padding: 5px;
+  font-size: 0.5rem;
+  color: #5ad538;
+}
+
+.night .fa-circle {
+  color: #5ad538;
+}
+
+.fa-ellipsis {
+  padding: 5px 8px;
+  border-radius: 50%;
+  transition: ease-in 0.2s;
+}
+
+.dot3:hover .fa-ellipsis {
+  background-color: #c5c5c5;
+}
+
+.night .dot3:hover .fa-ellipsis {
+  background-color: #475a6f;
+}
+
+.card-body {
+  background-color: #f8f9fa;
+  transition: ease-in 0.2s;
+  box-shadow: 0px 2px 2px 0px rgba(1, 1, 1, 0.1);
+}
+
+.night .card-body {
+  background-color: #3d4353;
+}
+
+.night .copyright {
+  color: #f8f9fa;
+}
+
+.linkIcon i {
+  color: #092c3e;
+  transition: ease-in 0.2s;
+}
+
+.night .linkIcon i {
+  color: #f8f9fa;
 }
 
 .theme {
@@ -87,7 +143,7 @@
 }
 
 .register {
-  height: 90vh;
+  height: 70vh;
   align-items: center;
 }
 
@@ -112,6 +168,28 @@
   background-color: #475a6f;
   transition: ease-in 0.2s;
   color: #fff;
+}
+
+.shuffle {
+  display: flex;
+  padding: 20px;
+  color: gray;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: ease-in 0.2s;
+}
+
+.night .shuffle {
+  color: #9c9c9c;
+}
+
+.night .shuffle:hover {
+  color: #e4e4e4;
+}
+
+.shuffle:hover {
+  color: #3d4353;
 }
 
 .box {
@@ -257,32 +335,4 @@
 
 .night .sendBtn {
   background-color: #475a6f;
-}
-
-.night i {
-  color: #fff;
-}
-
-footer{
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-footer{
-  z-index: -1;
-}
-
-footer a{
-  font-size: 1.5rem;
-  margin: 0px 40px;
-  color: gray;
-}
-
-footer i:hover{
-  color: rgb(48, 48, 48);
 }
