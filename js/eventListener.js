@@ -1,4 +1,4 @@
-import { appendMyChat, appendOtherChat, notification } from "./append.js";
+import { appendMyChat, appendOtherChat, appendMyImg, appendOtherImg, notification } from "./append.js";
 import { getRandomUserName } from "./data.js";
 import { socket } from "./cliant.js";
 
@@ -10,6 +10,8 @@ $(document).ready(function () {
   let userName;
   let typerId = [];
   let typerName = [];
+  let compressedImgData;
+  let originalImgData;
 
   $(".chatField").fadeOut(0);
 
@@ -33,28 +35,80 @@ $(document).ready(function () {
     $(".userName").val(getRandomUserName());
   });
 
-  $(".typingArea").keyup(function (e) {
-    if (e.key == "enter") socket.emit("stopTyping", userName);
-    else if ($(".typingArea").val()) socket.emit("typing", userName);
+  $(".typingArea").keypress(function (e) {
+    if (e.which === 13 && !e.shiftKey) {
+      e.preventDefault();
+      $(".sendBtn").click();
+      socket.emit("stopTyping", userName);
+    } else if ($(".typingArea").val()) socket.emit("typing", userName);
     else socket.emit("stopTyping", userName);
+  });
+
+  $(".imgUpload").change(function () {
+    if ($(".imgUpload").val()) {
+      const reader = new FileReader();
+      let canvas = $("<canvas>")[0];
+      let ctx = canvas.getContext("2d");
+      reader.readAsDataURL($(".imgUpload")[0].files[0]);
+      reader.onload = () => {
+        const img = new Image();
+        img.src = reader.result;
+        originalImgData = reader.result;
+        img.onload = () => {
+          let height = img.naturalHeight;
+          let width = img.naturalWidth;
+          canvas.width = 720;
+          canvas.height = canvas.width * (height / width);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          compressedImgData = canvas.toDataURL();
+          $(".imgPreview").attr("src", compressedImgData);
+          $(".uploadIcon").addClass("hide");
+          $(".imgPreviewBox").removeClass("hide");
+        };
+        console.log($(".imgPreview")[0].src);
+      };
+    }
+  });
+
+  $(".close").click(function () {
+    compressedImgData = undefined;
+    $(".imgUpload").val("");
+    $(".uploadIcon").removeClass("hide");
+    $(".imgPreviewBox").addClass("hide");
   });
 
   $(".sendBtn").click(function () {
     appendMyChat($(".typingArea").val());
 
+    if (compressedImgData) {
+      socket.emit("sendImg", compressedImgData);
+      appendMyImg(compressedImgData);
+      compressedImgData = undefined;
+      $(".imgUpload").val("");
+      $(".uploadIcon").removeClass("hide");
+      $(".imgPreviewBox").addClass("hide");
+    }
+
     socket.emit("stopTyping", userName);
     socket.emit("send", $(".typingArea").val());
-
     $(".typingArea").val("");
+    $(".typingArea").css("height", "0px");
     $(".typingArea").focus();
     scrollDown();
   });
 
   socket.on("receive", ({ massege, name }) => {
     if (massege) {
+      console.log(massege);
       appendOtherChat(massege, name);
       scrollDown();
     }
+  });
+
+  socket.on("receiveImg", (imgSrc, userName) => {
+    appendOtherImg(imgSrc, userName);
+    console.log(userName);
+    scrollDown();
   });
 
   socket.on("user-joined", (userName) => {

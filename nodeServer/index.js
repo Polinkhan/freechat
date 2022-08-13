@@ -20,6 +20,10 @@ io.on("connection", (socket) => {
     });
   });
 
+  socket.on("sendImg", (imgSrc) => {
+    socket.broadcast.emit("receiveImg", imgSrc, user[socket.id]);
+  });
+
   socket.on("typing", (name) => {
     socket.broadcast.emit("userIsTyping", name, socket.id, user);
   });
@@ -29,7 +33,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", (reason) => {
-    socket.broadcast.emit("userLeave",user[socket.id]);
+    socket.broadcast.emit("userLeave", user[socket.id]);
     socket.broadcast.emit("userStopedTyping", socket.id, user);
     delete user[socket.id];
   });
