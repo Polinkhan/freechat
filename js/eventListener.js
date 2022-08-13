@@ -61,7 +61,7 @@ $(document).ready(function () {
         img.onload = () => {
           let height = img.naturalHeight;
           let width = img.naturalWidth;
-          canvas.width = 720;
+          canvas.width = 480;
           canvas.height = canvas.width * (height / width);
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
           compressedImgData = canvas.toDataURL();
