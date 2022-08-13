@@ -40,7 +40,11 @@ $(document).ready(function () {
       e.preventDefault();
       $(".sendBtn").click();
       socket.emit("stopTyping", userName);
-    } else if ($(".typingArea").val()) socket.emit("typing", userName);
+    }
+  });
+
+  $(".typingArea").keyup(function (e) {
+    if ($(".typingArea").val()) socket.emit("typing", userName);
     else socket.emit("stopTyping", userName);
   });
 
