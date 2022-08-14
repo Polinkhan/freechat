@@ -1,13 +1,13 @@
 export let appendMyChat = (msg) => {
   if (msg) {
-    let $myDiv = $("<div>", { class: "row" });
-    let $myDivText = $("<pre>", { class: "myChat ms-auto" });
-    let $time = $("<div>", { class: "time" });
-    $myDivText.text(msg);
-    $time.text(new Date().toLocaleTimeString());
-    $myDiv.append($myDivText);
-    $myDiv.append($time);
-    $(".msgData").append($myDiv);
+    let $outherDiv = $("<div>", { class: "row" });
+    let $innerDiv1 = $("<div>", { class: "myChat ms-auto" });
+    let $innerDiv2 = $("<div>", { class: "time" });
+    $innerDiv1.text(msg);
+    $innerDiv2.text(new Date().toLocaleTimeString());
+    $outherDiv.append($innerDiv1);
+    $outherDiv.append($innerDiv2);
+    $(".msgData").append($outherDiv);
   }
 };
 
@@ -15,7 +15,7 @@ export let appendOtherChat = (msg, userName) => {
   let $otherDiv = $("<div>", { class: "row" });
   let $otherDivName = $("<div>", { class: "name text-capitalize" });
   let $otherDivLogo = $("<div>", { class: "userLogo" });
-  let $otherDivText = $("<pre>", { class: "otherChat me-auto" });
+  let $otherDivText = $("<div>", { class: "otherChat me-auto" });
   let $time = $("<div>", { class: "otherTime p-0" });
   $time.text(new Date().toLocaleTimeString());
   $otherDivLogo.html(`<i class="fa-solid fa-user"></i>`);

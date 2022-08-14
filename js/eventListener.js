@@ -1,4 +1,5 @@
 import { appendMyChat, appendOtherChat, appendMyImg, appendOtherImg, notification } from "./append.js";
+import { makeDark,makeWhite ,regHideOut} from "./style.js";
 import { getRandomUserName } from "./data.js";
 import { socket } from "./cliant.js";
 
@@ -13,22 +14,23 @@ $(document).ready(function () {
   let compressedImgData;
   let originalImgData;
 
-  $(".chatField").fadeOut(0);
+  $(".theme").click(function () {
+    let bgColour = getComputedStyle(document.body).getPropertyValue("--bg");
+    if (bgColour === "#f5f7fb") makeDark();
+    else makeWhite();
+  });
 
-  $(".theme_icon").click(function () {
-    if (!$(".icon_check").is(":checked")) $(".body").addClass("night");
-    else $(".body").removeClass("night");
+  $(".toggleUserList").click(function () {
+    $(".userDiv").toggleClass("hide");
+    if ($(".msgDiv").hasClass("col-9")) $(".msgDiv").removeClass("col-9");
+    else $(".msgDiv").addClass("col-9");
   });
 
   $("#registry").submit(function () {
     userName = $(".userName").val();
     if (!userName) userName = "Anonymous";
-    $(".fa-circle").removeClass("hide");
-    $(".userNameBody").html(userName);
-    $(".regField").fadeOut("swing", () => {
-      $(".chatField").fadeIn("swing");
-    });
     socket.emit("new-user-joined", userName);
+    regHideOut();
   });
 
   $(".shuffle").click(function () {
@@ -61,7 +63,7 @@ $(document).ready(function () {
         img.onload = () => {
           let height = img.naturalHeight;
           let width = img.naturalWidth;
-          canvas.width = 480;
+          canvas.width = 360;
           canvas.height = canvas.width * (height / width);
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
           compressedImgData = canvas.toDataURL();

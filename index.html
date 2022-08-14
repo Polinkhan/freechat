@@ -13,42 +13,28 @@
     <script type="module" src="js/cliant.js" defer></script>
   </head>
   <body class="body">
-    <nav class="navbar">
-      <div class="container-fluid col-4">
-        <a class="navbar-brand mx-auto fs-2" href="index.html"> <span class="fw-bold">Free</span>chat </a>
+    <nav class="navbar container">
+      <div class="col-lg-5 col-6">
+        <a class="navbar-brand fs-4" href="index.html"> <span class="fw-bold">Free</span>CHAT</a>
       </div>
-      <div class="col-6 d-flex justify-content-end align-item-center">
-        <i class="fa-solid fa-circle my-auto hide"></i>
-        <div class="text-capitalize userNameBody"></div>
+      <div class="col-lg-5 col-md-3 nav-items">
+        <ul class="text-uppercase">
+          <li>home</li>
+          <li>chat</li>
+          <li>contacts</li>
+          <li>settings</li>
+        </ul>
       </div>
-      <div class="col-2 text-center dot3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        <i class="fa-solid fa-gear fs-3"></i>
+      <div class="col-lg-2 col-md-3 col-4 iconDiv">
+        <i class="fa-solid fa-magnifying-glass fs-3"></i>
+        <i class="fa-solid fa-bell fs-3"></i>
+        <i class="fa-solid fa-sun theme fs-3"></i>
+        <i class="fa-solid fa-moon theme fs-3 hide"></i>
+      </div>
+      <div class="col-2 text-end px-4 bar align-middle hide">
+        <i class="fa-solid fa-bars fs-4"></i>
       </div>
     </nav>
-
-    <div class="collapse" id="collapseExample">
-      <div class="card card-body border-0">
-        <div class="row">
-          <div class="col-4 text-center my-auto copyright">
-            <i class="fa-regular fa-copyright"></i>
-            2022 Freechat
-          </div>
-          <div class="col-4 linkIcon d-flex justify-content-around align-item-center my-auto">
-            <a href="https://github.com/polinkhan"><i class="fa-brands fa-github fs-2"></i></a>
-            <a href="https://www.facebook.com/abusayedpolin"><i class="fa-brands fa-square-facebook fs-2"></i></a>
-            <a href="https://linkedin.com/in/abusayedpolin"><i class="fa-brands fa-linkedin fs-2"></i></a>
-          </div>
-          <div class="col-4">
-            <div class="theme">
-              <label>
-                <input type="checkbox" class="icon_check" />
-                <span class="theme_icon"></span>
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="container regField">
       <div class="register row">
@@ -69,33 +55,74 @@
       </div>
     </div>
 
-    <div class="container chatField">
-      <div class="box row mx-auto flex-column justify-content-center">
-        <div class="msgBox col-lg-10 col-12 mx-auto">
-          <div class="msgData row justify-content-center"></div>
+    <div class="msgBody">
+      <div class="container mb-3">
+        <div class="row gx-4">
+          <div class="col-3 hide bar2">
+            <div class="toggleUserList">
+              <i class="fa-solid fa-bars fs-1 my-auto"></i>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="searchBox centerContent">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" class="form-control border-0 searchInput" placeholder="Search" />
+            </div>
+          </div>
+          <div class="col-lg-1 col-md-2 col-3 ms-auto my-auto">
+            <div class="more centerContent">More</div>
+          </div>
         </div>
-        <div class="chatBox col-lg-10 col-12 mx-auto">
-          <div class="typingIndicator"></div>
-          <form action="" onsubmit="return false" name="chat" class="row">
-            <div class="col-lg-2 col-3 position-relative imgPreviewBox hide">
-              <img src ="" class="imgPreview position-absolute top-50 start-50 translate-middle" />
-              <div class="close position-absolute top-50 start-50 translate-middle fw-bold"><i class="fa-solid fa-trash-can"></i></div>
+      </div>
+
+      <div class="container">
+        <div class="row gx-4">
+          <div class="col-lg-3 col-md-4 col-3 userDiv">
+            <div class="userList">
+              <div class="row user g-0">
+                <div class="avater col-3 col-md-3 col-sm-12 py-3">
+                  <img src="./assets/img_258694.png.crdownload" class="img-fluid" alt="" />
+                </div>
+                <div class="labelName col my-auto py-3">
+                  <div class="row flex-column px-2">
+                    <div class="col-12 fs-6 fw-bold userNName">Group Chat</div>
+                    <div class="col-12 lastMsg text-muted">....</div>
+                  </div>
+                </div>
+                <div class="col-2 labelTime text-muted my-auto">12:00</div>
+              </div>
             </div>
-            <div class="col-md-1 col-2 my-auto uploadIcon p-0 text-center">
-              <label for="upload">
-                <i class="fa-solid fa-image fs-3"></i>
-              </label>
-              <input type="file" class="imgUpload" id="upload" />
+          </div>
+          <div class="col-lg-9 col-md-8 col-9 msgDiv">
+            <div class="Box row mx-auto flex-column justify-content-center">
+              <div class="msgBox mx-auto">
+                <div class="msgData row justify-content-center"></div>
+              </div>
+              <div class="chatBox mx-auto">
+                <div class="typingIndicator"></div>
+                <form action="" onsubmit="return false" name="chat" class="row h-100">
+                  <div class="col-lg-2 col-3 position-relative imgPreviewBox hide">
+                    <img src="" class="imgPreview position-absolute top-50 start-50 translate-middle" />
+                    <div class="close position-absolute top-50 start-50 translate-middle fw-bold"><i class="fa-solid fa-trash-can"></i></div>
+                  </div>
+                  <div class="col-lg-1 col-2 uploadIcon p-0 text-center my-auto">
+                    <label for="upload">
+                      <i class="fa-solid fa-image fs-3"></i>
+                    </label>
+                    <input type="file" class="imgUpload" id="upload" />
+                  </div>
+                  <div class="col my-auto">
+                    <textarea class="typingArea form-control w-100 border-0" rows="1" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' placeholder=" type a massage"></textarea>
+                  </div>
+                  <div class="col-lg-1 col-2 my-auto text-center">
+                    <button type="submit" class="btn sendBtn mx-auto p-0 border-0">
+                      <i class="fa-solid fa-paper-plane fs-5"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
-            <div class="col">
-              <textarea class="typingArea form-control w-100 border-0" rows="1" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
-            </div>
-            <div class="col-md-1 col-2 my-auto">
-              <button type="submit" class="btn sendBtn fs-4 p-0 border-0 w-100">
-                <i class="fa-solid fa-paper-plane"></i>
-              </button>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
