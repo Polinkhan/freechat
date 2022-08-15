@@ -4,7 +4,7 @@
 }
 
 :root {
-  --bg: #f5f7fb;
+  --bg:#f5f7fb;
   --box: #fff;
   --icon: #212529;
   --gray: gray;
@@ -391,7 +391,22 @@ i {
 
   .userList {
     padding: 0px;
+    height: 70vh;
   }
+
+  .fullBox{
+    height: 80vh;
+    vertical-align: middle;
+  }
+
+  .Box{
+    height: 70vh;
+  }
+
+  .msgBox{
+    height: 60vh;
+  }
+
   .user {
     margin: 0;
     padding: 0;
