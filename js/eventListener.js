@@ -13,12 +13,15 @@ $(document).ready(function () {
   let originalImgData;
 
   socket.emit("requstUserData");
-  socket.on("getUserData", (user) => {
-    console.log(user);
+  socket.on("getUserData", (user, imgData) => {
     Object.keys(user).forEach(function (key) {
       console.log(key, user[key]);
-      userInfo("", user[key], key);
+      userInfo(imgData[key], user[key], key);
     });
+  });
+
+  socket.on("receiveActiveUserNumer", (number) => {
+    $(".number").text(number-1);
   });
 
   $(".createAccBtn").click(function () {
@@ -41,7 +44,9 @@ $(document).ready(function () {
 
   $(".signInForm").submit(function () {
     userName = $(".userName").val();
-    socket.emit("new-user-joined", userName);
+    let imgSrc = $(".signInForm").find('input[name="avtr"]:checked').val();
+    socket.emit("new-user-joined", userName, imgSrc);
+    socket.emit("ActiveUserNumer");
     regHideOut();
   });
 
@@ -115,10 +120,10 @@ $(document).ready(function () {
     scrollDown();
   });
 
-  socket.on("receive", ({ massege, name }) => {
+  socket.on("receive", (massege, name, imgSrc) => {
     if (massege) {
       console.log(massege);
-      appendOtherChat(massege, name);
+      appendOtherChat(massege, name, imgSrc);
       scrollDown();
     }
   });
@@ -129,16 +134,20 @@ $(document).ready(function () {
     scrollDown();
   });
 
-  socket.on("user-joined", (userName, userId) => {
+  socket.on("user-joined", (userName, userId, imgSrc, user) => {
+    console.log(imgSrc);
     if (userName) {
       notification(userName, "joined");
-      userInfo("", userName, userId);
+      userInfo(imgSrc, userName, userId);
+      socket.emit("ActiveUserNumer");
+      console.log(user);
     }
   });
-  socket.on("userLeave", (userName, id) => {
+  socket.on("userLeave", (userName, id, user) => {
     if (userName) notification(userName, "left");
     id = "#" + id;
     $(id).remove();
+    socket.emit("ActiveUserNumer");
   });
 
   socket.on("userIsTyping", (user, id, userData) => {

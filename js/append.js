@@ -4,21 +4,22 @@ export let appendMyChat = (msg) => {
     let $innerDiv1 = $("<div>", { class: "myChat ms-auto" });
     let $innerDiv2 = $("<div>", { class: "time" });
     $innerDiv1.text(msg);
-    $innerDiv2.text(new Date().toLocaleTimeString());
+    $innerDiv2.text(getCurrentTime());
     $outherDiv.append($innerDiv1);
     $outherDiv.append($innerDiv2);
     $(".msgData").append($outherDiv);
   }
 };
 
-export let appendOtherChat = (msg, userName) => {
+export let appendOtherChat = (msg, userName, imgSrc) => {
   let $otherDiv = $("<div>", { class: "row" });
   let $otherDivName = $("<div>", { class: "name text-capitalize" });
-  let $otherDivLogo = $("<div>", { class: "userLogo" });
+  let $otherDivLogo = $("<div>", { class: "userLogo p-0" });
   let $otherDivText = $("<div>", { class: "otherChat me-auto" });
   let $time = $("<div>", { class: "otherTime p-0" });
-  $time.text(new Date().toLocaleTimeString());
-  $otherDivLogo.html(`<i class="fa-solid fa-user"></i>`);
+  let $img = $("<img>",{class:"img-fluid",src:imgSrc})
+  $time.text(getCurrentTime());
+  $otherDivLogo.append($img);
   $otherDiv.append($otherDivName);
   $otherDiv.append($otherDivLogo);
   $otherDiv.append($otherDivText);
@@ -33,7 +34,7 @@ export let appendMyImg = (imgSrc) => {
   let $myDivImg = $("<div>", { class: "col-lg-5 col-md-7 col-9 ms-auto imgBody mt-2" });
   let $myImg = $("<img>", { class: "img", src: imgSrc });
   let $time = $("<div>", { class: "time" });
-  $time.text(new Date().toLocaleTimeString());
+  $time.text(getCurrentTime());
   $myDivImg.append($myImg);
   $myDivImg.append($time);
   $myDiv.append($myDivImg);
@@ -47,7 +48,7 @@ export let appendOtherImg = (imgSrc, userName) => {
   let $otherDivImg = $("<div>", { class: "col-lg-5 col-md-7 col-9 imgBody me-auto" });
   let $otherImg = $("<img>", { class: "img", src: imgSrc });
   let $time = $("<div>", { class: "otherTime" });
-  $time.text(new Date().toLocaleTimeString());
+  $time.text(getCurrentTime());
   $otherDivLogo.html(`<i class="fa-solid fa-user"></i>`);
   $otherDivImg.append($otherImg);
   $otherDiv.append($otherDivName);
@@ -61,13 +62,13 @@ export let appendOtherImg = (imgSrc, userName) => {
 export let userInfo = (imgSrc, userName, userId) => {
   let t_id = "type" + userId;
   let $masterDiv = $("<div>", { class: "row user g-0", id: userId });
-  let $outerDiv1 = $("<div>", { class: "avater col-3 col-md-3 col-sm-12 py-3" });
-  let $outerDiv2 = $("<div>", { class: "labelName col my-auto py-3" });
+  let $outerDiv1 = $("<div>", { class: "avater col-3 col-md-3 col-sm-12" });
+  let $outerDiv2 = $("<div>", { class: "labelName col my-auto" });
   let $outerDiv3 = $("<div>", { class: "col-2 labelTime text-muted my-auto" });
   let $OD1Content = $("<img>", { class: "img-fluid", src: imgSrc });
   let $OD2Content = $("<div>", { class: "row flex-column px-2" });
-  let $OD2CofContent1 = $("<div>", { class: "col-12 fs-6 fw-bold userNName" });
-  let $OD2CofContent2 = $("<div>", { class: "col-12 typingIndicator text-muted", id: t_id });
+  let $OD2CofContent1 = $("<div>", { class: "col-12 fw-bold userNName" });
+  let $OD2CofContent2 = $("<div>", { class: "col-12 typingIndicator", id: t_id });
   $OD2CofContent1.text(userName);
   $OD2CofContent2.text("Online");
   $outerDiv3.text(getCurrentTime());

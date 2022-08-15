@@ -124,6 +124,7 @@ i {
 .signInBtn {
   background-color: var(--bg);
   padding: 10px 20px;
+  cursor:not-allowed;
 }
 
 .guestBtn {
@@ -136,6 +137,7 @@ i {
   background-color: #4c50df;
   color: #fff;
   padding: 10px 20px;
+  cursor:not-allowed;
 }
 
 .backToLogin {
@@ -153,6 +155,24 @@ i {
 .userPassInput input {
   height: 50px;
   padding: 0px 20px;
+}
+
+.avatarIcon{
+  margin: 10px 0px;
+}
+
+.avatarIcon label{
+  cursor: pointer;
+  filter: grayscale(100%);
+  transition: ease-in 0.2s;
+}
+
+.avatarIcon input{
+  display: none;
+}
+
+input[type="radio"]:checked+label{
+ filter: grayscale(0%);
 }
 
 .createAccountDiv {
@@ -208,14 +228,20 @@ i {
 
 .user {
   width: 100%;
+  overflow: hidden;
+  border-bottom: 2px solid gray;
+  border-radius: 7px;
 }
 
 .userNName {
   color: var(--icon);
   transition: ease-in 0.2s;
+  padding: 0;
+  text-align:center;
 }
 
 .avater {
+  padding: 16px 0px ;
   display: flex;
   justify-content: center;
 }
@@ -224,7 +250,13 @@ i {
   border-radius: 50%;
 }
 
+.avtrText{
+  font-size: 0.8rem;
+  color: gray;
+}
+
 .labelTime {
+  padding: 16px 0px;
   font-size: 0.7rem;
 }
 
@@ -330,7 +362,7 @@ i {
 .time {
   display: flex;
   justify-content: end;
-  padding-right: 5px;
+  padding-right: 10px;
   align-items: center;
   font-size: 0.6rem;
   color: var(--gray);
@@ -338,7 +370,7 @@ i {
 .otherTime {
   display: flex;
   justify-content: start;
-  margin-left: 55px;
+  margin-left: 60px;
   align-items: center;
   font-size: 0.6rem;
   color: var(--gray);
@@ -373,14 +405,9 @@ i {
 }
 
 .userLogo {
-  display: flex;
   height: 40px;
   width: 40px;
-  align-items: center;
   border-radius: 50%;
-  justify-content: center;
-  background-color: #0084ff;
-  color: #fff;
 }
 
 .chatBox {
@@ -389,8 +416,10 @@ i {
 }
 
 .typingIndicator {
-  color: var(--gray);
+  color: var(--icon);
   font-size: 0.8rem;
+  text-align: center;
+  padding: 0;
 }
 
 .icon {
@@ -458,11 +487,6 @@ i {
 }
 
 @media only screen and (max-width: 768px) {
-  .labelName,
-  .labelTime {
-    display: none;
-  }
-
   .userList {
     padding: 0px;
     height: 70vh;
@@ -489,7 +513,18 @@ i {
     padding: 0;
   }
 
+  .labelName {
+    padding: 0;
+    font-size: 0.7rem;
+    text-align: center;
+  }
+  .labelTime {
+    display: none;
+  }
+
+
   .avater {
+    padding: 5px 0px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -525,7 +560,7 @@ i {
     background-color: var(--bg);
     transform: translateX(0%);
   }
-  .signInBtn{
+  .signInBtn {
     background-color: #fff;
   }
 }

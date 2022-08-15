@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Free Chat</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/style.css" />
@@ -50,10 +50,37 @@
             <div class="form mx-auto">
               <form action="" class="signInForm" onsubmit="return false">
                 <div class="userNameInput">
-                  <input type="text" class="form-control rounded-pill userName" placeholder="Username" required />
+                  <input type="text" class="form-control rounded-pill userName" minlength="4" maxlength="8" placeholder="Username" required />
                 </div>
                 <div class="userPassInput">
                   <input type="text" class="form-control rounded-pill" placeholder="Password" />
+                </div>
+                <div class="avatarIconDiv row text-center">
+                  <div class="avtrText">Select Your Avatar</div>
+                  <div class="col-3 avatarIcon">
+                    <input type="radio" id="gamer" name="avtr" value="./assets/gamer.png" checked/>
+                    <label for="gamer">
+                      <img src="./assets/gamer.png" class="img-fluid" />
+                    </label>
+                  </div>
+                  <div class="col-3 avatarIcon hh">
+                    <input type="radio" id="man" name="avtr" value="./assets/man.png" />
+                    <label for="man">
+                      <img src="./assets/man.png" class="img-fluid" />
+                    </label>
+                  </div>
+                  <div class="col-3 avatarIcon">
+                    <input type="radio" id="woman" name="avtr" value="./assets/woman.png"/>
+                    <label for="woman">
+                      <img src="./assets/woman.png" class="img-fluid" />
+                    </label>
+                  </div>
+                  <div class="col-3 avatarIcon">
+                    <input type="radio" id="profile" name="avtr" value="./assets/profile.png"/>
+                    <label for="profile">
+                      <img src="./assets/profile.png" class="img-fluid" />
+                    </label>
+                  </div>
                 </div>
                 <div class="btnDiv">
                   <div class="btn signInBtn rounded-pill" name="submit" value="logIn">Sign In</div>
@@ -69,7 +96,11 @@
           </div>
         </div>
         <div class="col-lg-6 col-md-4 col-sm-0 signUpDiv">
-          <div class="signUp"></div>
+          <div class="signUp">
+            <div class="Welcome fs-1 text-light centerContent h-100 text-center">
+              <h1>Welcome Back</h1>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -101,20 +132,18 @@
         <div class="row gx-4">
           <div class="col-lg-3 col-md-4 col-3 userDiv">
             <div class="userList">
-
               <div class="row user g-0">
-                <div class="avater col-3 col-md-3 col-sm-12 py-3">
+                <div class="avater col-3 col-md-3 col-sm-12">
                   <img src="./assets/group.png" class="img-fluid" alt="" />
                 </div>
-                <div class="labelName col my-auto py-3">
+                <div class="labelName col my-auto">
                   <div class="row flex-column px-2">
-                    <div class="col-12 fs-6 fw-bold userNName">Group Chat</div>
-                    <div class="col-12 typingIndicator text-muted">....</div>
+                    <div class="col-12 fw-bold userNName">Group Chat</div>
+                    <div class="col-12 typingIndicator text-success">0nline : <span class="number"></span></div>
                   </div>
                 </div>
                 <div class="col-2 labelTime text-muted my-auto">12:00</div>
               </div>
-              
             </div>
           </div>
           <div class="col-lg-9 col-md-8 col-9 msgDiv">

@@ -1,25 +1,29 @@
 const { Server } = require("socket.io");
 
 let user = {};
+let imgData = {};
 let port = process.env.PORT || 8000;
 
 const io = new Server(port, { cors: { origin: "*" } });
 
 io.on("connection", (socket) => {
-  socket.on("new-user-joined", (name) => {
+  console.log(Object.keys(user).length);
+  socket.on("new-user-joined", (name, imgSrc) => {
     user[socket.id] = name;
-    socket.broadcast.emit("user-joined", name, socket.id);
+    imgData[socket.id] = imgSrc;
+    socket.broadcast.emit("user-joined", name, socket.id, imgData[socket.id], user);
+  });
+
+  socket.on("ActiveUserNumer", () => {
+    socket.emit("receiveActiveUserNumer", Object.keys(user).length);
   });
 
   socket.on("requstUserData", () => {
-    socket.emit("getUserData", user);
+    socket.emit("getUserData", user, imgData);
   });
 
   socket.on("send", (massege) => {
-    socket.broadcast.emit("receive", {
-      massege: massege,
-      name: user[socket.id],
-    });
+    socket.broadcast.emit("receive", massege, user[socket.id], imgData[socket.id]);
   });
 
   socket.on("sendImg", (imgSrc) => {
@@ -35,8 +39,9 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
-    socket.broadcast.emit("userLeave", user[socket.id], socket.id);
+    socket.broadcast.emit("userLeave", user[socket.id], socket.id, user);
     socket.broadcast.emit("userStopedTyping", socket.id, user);
     delete user[socket.id];
+    delete imgData[socket.id];
   });
 });
