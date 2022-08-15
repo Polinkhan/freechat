@@ -37,27 +37,40 @@
         <i class="fa-solid fa-magnifying-glass fs-3"></i>
         <i class="fa-solid fa-bell fs-3"></i>
       </div>
-      <div class="col-2 bar hide">
+      <div class="col-2 bar">
         <i class="fa-solid fa-bars fs-4"></i>
       </div>
     </nav>
 
-    <div class="container regField">
-      <div class="register row">
-        <form action="" onsubmit="return false" id="registry">
-          <div class="row justify-content-center gx-0">
-            <div class="col-lg-4 col-md-6 col-10 mb-3">
-              <input type="text" class="form-control userName w-100 border-0 rounded-0" placeholder="Enter Username" />
-            </div>
-            <div class="col-lg-1 col-md-2 col-10 text-center">
-              <button type="submit" class="btn btn-warning joinBtn w-100 border-0 rounded-0">join</button>
+    <div class="container centerContent signInUpBox">
+      <div class="regDiv mx-auto row g-0 border">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+          <div class="signIn">
+            <div class="heading centerContent">Sign In</div>
+            <div class="form mx-auto">
+              <form action="" class="signInForm" onsubmit="return false">
+                <div class="userNameInput">
+                  <input type="text" class="form-control rounded-pill userName" placeholder="Username" required />
+                </div>
+                <div class="userPassInput">
+                  <input type="text" class="form-control rounded-pill" placeholder="Password" />
+                </div>
+                <div class="btnDiv">
+                  <div class="btn signInBtn rounded-pill" name="submit" value="logIn">Sign In</div>
+                  <button class="btn guestBtn rounded-pill" name="submit" value="guest">As Guest</button>
+                  <div class="btn signUpBtn rounded-pill hide">Sign Up</div>
+                  <div class="btn backToLogin rounded-pill backBtn hide">Back</div>
+                </div>
+              </form>
+              <div class="createAccountDiv centerContent">
+                <p>Don't have a account ? <span class="createAccBtn">register now</span></p>
+              </div>
             </div>
           </div>
-          <div class="shuffle text-center">
-            <h6 class="m-0 mx-2 text-decoration-underline">Click to pick a random name</h6>
-            <i class="fa-solid fa-hand-pointer"></i>
-          </div>
-        </form>
+        </div>
+        <div class="col-lg-6 col-md-4 col-sm-0 signUpDiv">
+          <div class="signUp"></div>
+        </div>
       </div>
     </div>
 
@@ -137,6 +150,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>    <script type="module" src="./js/eventListener.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="module" src="./js/eventListener.js"></script>
   </body>
 </html>

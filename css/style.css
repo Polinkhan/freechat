@@ -37,16 +37,12 @@ i {
 .navbar {
   min-height: 10vh;
   margin-bottom: 20px;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .navbar-brand {
   color: var(--icon);
-  transition: ease-in 0.2s;
-}
-
-.nav-items {
-  visibility: hidden;
-  opacity: 0;
   transition: ease-in 0.2s;
 }
 
@@ -61,7 +57,7 @@ i {
   text-decoration: none;
   color: var(--icon);
   transition: ease-in 0.2s;
-  /* padding: 0px 20px; */
+  font-weight: bold;
 }
 
 .item {
@@ -70,18 +66,103 @@ i {
 }
 
 .item:hover li a {
-  color: #3ca489;
+  color: #4c50df;
   padding: 0px 20px;
-  border-bottom: 1px solid #3ca489;
+  border-bottom: 1px solid #4c50df;
 }
 
 .iconDiv {
   display: flex;
   justify-content: space-around;
-  visibility: hidden;
-  opacity: 0;
 }
 .iconDiv i {
+  cursor: pointer;
+}
+
+.signInUpBox {
+  height: 75vh;
+}
+
+.regDiv {
+  height: 600px;
+  width: 80%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.signUp {
+  height: 100%;
+  background-color: #4c50df;
+  transition: ease-in 0.6s;
+  transform: translateX(-100%);
+  z-index: -1;
+}
+.signIn {
+  height: 100%;
+  background-color: #fff;
+  transition: ease-in 0.6s;
+  transform: translateX(100%);
+}
+
+.heading {
+  height: 150px;
+  font-size: 2.5rem;
+  font-weight: bolder;
+  color: #4c50df;
+}
+
+.form {
+  width: 60%;
+}
+
+.btnDiv {
+  display: flex;
+  padding-top: 20px;
+  justify-content: space-around;
+}
+
+.signInBtn {
+  background-color: var(--bg);
+  padding: 10px 20px;
+}
+
+.guestBtn {
+  background-color: #4c50df;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.signUpBtn {
+  background-color: #4c50df;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.backToLogin {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.userNameInput,
+.userPassInput {
+  margin: 30px 0px;
+}
+
+.userNameInput input,
+.userPassInput input {
+  height: 50px;
+  padding: 0px 20px;
+}
+
+.createAccountDiv {
+  font-size: 0.9rem;
+  height: 100px;
+}
+
+.createAccountDiv span {
+  color: #dc3545;
+  text-decoration: underline;
   cursor: pointer;
 }
 
@@ -153,43 +234,8 @@ i {
   height: 75vh;
   transition: ease-in 0.2s;
 }
-.register {
-  height: 70vh;
-  align-items: center;
-}
 
-.userName {
-  background-color: var(--box);
-}
-
-.userName,
-.joinBtn {
-  height: 50px;
-  box-shadow: 0px 0px 5px 0px rgba(1, 1, 1, 0.1);
-  transition: ease-in 0.2s;
-  color: #212529;
-}
-
-.userName:focus,
-.joinBtn:focus {
-  box-shadow: 0px 0px 10px 0px rgba(1, 1, 1, 0.1);
-}
-
-.shuffle {
-  display: flex;
-  padding: 20px;
-  color: var(--gray);
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  transition: ease-in 0.2s;
-}
-
-.shuffle:hover {
-  color: var(--icon);
-}
-
-.msgData::-webkit-scrollba
+.msgData::-webkit-scrollbar {
   margin-top: 10px;
   width: 5px;
 }
@@ -266,7 +312,6 @@ i {
 .typingGif {
   height: 15px;
   border-radius: 30px;
-  /* background-color: var(--icon); */
 }
 .myChat {
   overflow-wrap: break-word;
@@ -278,7 +323,7 @@ i {
   border-bottom-left-radius: 20px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 20px;
-  background-color: #4e426d;
+  background-color: #4c50df;
   color: #fff;
 }
 
@@ -314,7 +359,6 @@ i {
 
 .otherChat {
   padding: 10px;
-  /* height: 40px; */
   overflow-wrap: break-word;
   width: fit-content;
   max-width: 75%;
@@ -390,6 +434,33 @@ i {
   box-shadow: none;
 }
 
+@media only screen and (min-width: 991px) {
+  .bar {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .navbar {
+    margin-bottom: 0px;
+  }
+
+  .nav-items {
+    display: none;
+  }
+  .bar {
+    display: flex;
+    justify-content: end;
+    padding-right: 15px;
+  }
+  .signUp {
+    transform: translateX(-200%);
+  }
+  .signIn {
+    transform: translateX(50%);
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .labelName,
   .labelTime {
@@ -447,19 +518,18 @@ i {
     border-radius: 20px;
     transition: ease-in 0.2s;
   }
-}
-
-@media only screen and (max-width: 991px) {
-  .navbar {
-    margin-bottom: 0px;
-  }
-
-  .nav-items {
+  .signUpDiv {
     display: none;
   }
-  .bar {
-    display: flex;
-    justify-content: end;
-    padding-right: 15px;
+
+  .regDiv {
+    width: 100%;
+  }
+  .signIn {
+    background-color: var(--bg);
+    transform: translateX(0%);
+  }
+  .signInBtn{
+    background-color: #fff;
   }
 }

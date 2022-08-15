@@ -1,5 +1,5 @@
 import { appendMyChat, appendOtherChat, appendMyImg, appendOtherImg, notification } from "./append.js";
-import { makeDark, makeWhite, regHideOut, toggleUserList } from "./style.js";
+import { makeDark, makeWhite, regHideOut, toggleUserList, signInToSignUp, signUpToSignIn } from "./style.js";
 import { getRandomUserName } from "./data.js";
 import { socket } from "./cliant.js";
 
@@ -14,9 +14,17 @@ $(document).ready(function () {
   let compressedImgData;
   let originalImgData;
 
+  $(".createAccBtn").click(function () {
+    signInToSignUp();
+  });
+
+  $(".backBtn").click(function () {
+    signUpToSignIn();
+  });
+
   $(".themeIcon").click(function () {
     let bgColour = getComputedStyle(document.body).getPropertyValue("--bg");
-    if (bgColour === "#f5f7fb") makeDark();
+    if (bgColour === " #f5f7fb") makeDark();
     else makeWhite();
   });
 
@@ -24,7 +32,7 @@ $(document).ready(function () {
     toggleUserList();
   });
 
-  $("#registry").submit(function () {
+  $(".signInForm").submit(function () {
     userName = $(".userName").val();
     socket.emit("new-user-joined", userName);
     regHideOut();

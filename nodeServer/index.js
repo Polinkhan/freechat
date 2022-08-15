@@ -8,8 +8,6 @@ const io = new Server(port, { cors: { origin: "*" } });
 io.on("connection", (socket) => {
   socket.on("new-user-joined", (name) => {
     user[socket.id] = name;
-    console.log("joined");
-    console.log(user);
     socket.broadcast.emit("user-joined", name);
   });
 
