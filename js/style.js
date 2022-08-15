@@ -14,9 +14,28 @@ export let makeWhite = () => {
   $(".fa-sun").toggleClass("hide");
 };
 
+let makeVisible = (elem) => {
+  elem.css({ visibility: "visible" });
+  elem.css({ opacity: "1" });
+  elem.css({ transition: "ease-in 0.2s" });
+};
+
 export let regHideOut = () => {
   $(".regField").fadeOut("swing", () => {
-    $(".msgBody").css({ visibility: "visible" });
-    $(".msgBody").fadeIn("swing");
+    makeVisible($(".msgBody"));
+    makeVisible($(".iconDiv"));
+    makeVisible($(".nav-items"));
   });
 };
+
+export let toggleUserList = () => {
+  $(".userDiv").toggleClass("hide");
+  if ($(".msgDiv").hasClass("col-9")) {
+    $(".msgDiv").removeClass("col-9");
+    $(".bar2Icon").css({ transform: "rotate(0deg)" });
+  } else {
+    $(".msgDiv").addClass("col-9");
+    $(".bar2Icon").css({ transform: "rotate(-90deg)" });
+  }
+};
+

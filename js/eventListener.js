@@ -1,5 +1,5 @@
 import { appendMyChat, appendOtherChat, appendMyImg, appendOtherImg, notification } from "./append.js";
-import { makeDark,makeWhite ,regHideOut} from "./style.js";
+import { makeDark, makeWhite, regHideOut, toggleUserList } from "./style.js";
 import { getRandomUserName } from "./data.js";
 import { socket } from "./cliant.js";
 
@@ -8,27 +8,24 @@ let scrollDown = () => {
 };
 
 $(document).ready(function () {
-  let userName;
+  let userName = "Anonymous";
   let typerId = [];
   let typerName = [];
   let compressedImgData;
   let originalImgData;
 
-  $(".theme").click(function () {
+  $(".themeIcon").click(function () {
     let bgColour = getComputedStyle(document.body).getPropertyValue("--bg");
     if (bgColour === "#f5f7fb") makeDark();
     else makeWhite();
   });
 
   $(".toggleUserList").click(function () {
-    $(".userDiv").toggleClass("hide");
-    if ($(".msgDiv").hasClass("col-9")) $(".msgDiv").removeClass("col-9");
-    else $(".msgDiv").addClass("col-9");
+    toggleUserList();
   });
 
   $("#registry").submit(function () {
     userName = $(".userName").val();
-    if (!userName) userName = "Anonymous";
     socket.emit("new-user-joined", userName);
     regHideOut();
   });
