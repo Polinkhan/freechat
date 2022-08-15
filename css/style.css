@@ -386,15 +386,11 @@ i {
 .chatBox {
   height: 10vh;
   transition: ease-in 0.2s;
-  position: relative;
 }
 
 .typingIndicator {
   color: var(--gray);
   font-size: 0.8rem;
-  position: absolute;
-  top: -25px;
-  right: 30px;
 }
 
 .icon {

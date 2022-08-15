@@ -8,7 +8,11 @@ const io = new Server(port, { cors: { origin: "*" } });
 io.on("connection", (socket) => {
   socket.on("new-user-joined", (name) => {
     user[socket.id] = name;
-    socket.broadcast.emit("user-joined", name);
+    socket.broadcast.emit("user-joined", name, socket.id);
+  });
+
+  socket.on("requstUserData", () => {
+    socket.emit("getUserData", user);
   });
 
   socket.on("send", (massege) => {
@@ -30,8 +34,8 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("userStopedTyping", socket.id, user);
   });
 
-  socket.on("disconnect", (reason) => {
-    socket.broadcast.emit("userLeave", user[socket.id]);
+  socket.on("disconnect", () => {
+    socket.broadcast.emit("userLeave", user[socket.id], socket.id);
     socket.broadcast.emit("userStopedTyping", socket.id, user);
     delete user[socket.id];
   });

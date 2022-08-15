@@ -1,4 +1,4 @@
-import { appendMyChat, appendOtherChat, appendMyImg, appendOtherImg, notification } from "./append.js";
+import { appendMyChat, appendOtherChat, appendMyImg, appendOtherImg, notification, userInfo } from "./append.js";
 import { makeDark, makeWhite, regHideOut, toggleUserList, signInToSignUp, signUpToSignIn } from "./style.js";
 import { getRandomUserName } from "./data.js";
 import { socket } from "./cliant.js";
@@ -9,10 +9,17 @@ let scrollDown = () => {
 
 $(document).ready(function () {
   let userName = "Anonymous";
-  let typerId = [];
-  let typerName = [];
   let compressedImgData;
   let originalImgData;
+
+  socket.emit("requstUserData");
+  socket.on("getUserData", (user) => {
+    console.log(user);
+    Object.keys(user).forEach(function (key) {
+      console.log(key, user[key]);
+      userInfo("", user[key], key);
+    });
+  });
 
   $(".createAccBtn").click(function () {
     signInToSignUp();
@@ -122,26 +129,25 @@ $(document).ready(function () {
     scrollDown();
   });
 
-  socket.on("user-joined", (userName) => {
-    if (userName) notification(userName, "joined");
+  socket.on("user-joined", (userName, userId) => {
+    if (userName) {
+      notification(userName, "joined");
+      userInfo("", userName, userId);
+    }
   });
-  socket.on("userLeave", (userName) => {
+  socket.on("userLeave", (userName, id) => {
     if (userName) notification(userName, "left");
+    id = "#" + id;
+    $(id).remove();
   });
 
   socket.on("userIsTyping", (user, id, userData) => {
-    if (!typerId.includes(id)) {
-      typerId.push(id);
-      typerName.push(userData[id]);
-    }
-    if (typerName.length) $(".typingIndicator").html(typerName + ` is typing <img class="typingGif" src="./assets/dots.gif">`);
+    let t_id = "#type" + id;
+    $(t_id).html(`typing <img class="typingGif" src="./assets/dots.gif">`);
   });
 
   socket.on("userStopedTyping", (id, userData) => {
-    typerId.splice(typerId.indexOf(id), 1);
-    typerName.splice(typerName.indexOf(userData[id]), 1);
-
-    if (typerName.length) $(".typingIndicator").html(typerName + ` is typing <img class="typingGif" src="./assets/dots.gif">`);
-    else $(".typingIndicator").text("");
+    let t_id = "#type" + id;
+    $(t_id).html(`Online`);
   });
 });

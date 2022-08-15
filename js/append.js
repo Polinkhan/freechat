@@ -40,7 +40,7 @@ export let appendMyImg = (imgSrc) => {
   $(".msgData").append($myDiv);
 };
 
-export let appendOtherImg = (imgSrc,userName) => {
+export let appendOtherImg = (imgSrc, userName) => {
   let $otherDiv = $("<div>", { class: "row" });
   let $otherDivName = $("<div>", { class: "name text-capitalize" });
   let $otherDivLogo = $("<div>", { class: "userLogo" });
@@ -58,8 +58,36 @@ export let appendOtherImg = (imgSrc,userName) => {
   $(".msgData").append($otherDiv);
 };
 
+export let userInfo = (imgSrc, userName, userId) => {
+  let t_id = "type" + userId;
+  let $masterDiv = $("<div>", { class: "row user g-0", id: userId });
+  let $outerDiv1 = $("<div>", { class: "avater col-3 col-md-3 col-sm-12 py-3" });
+  let $outerDiv2 = $("<div>", { class: "labelName col my-auto py-3" });
+  let $outerDiv3 = $("<div>", { class: "col-2 labelTime text-muted my-auto" });
+  let $OD1Content = $("<img>", { class: "img-fluid", src: imgSrc });
+  let $OD2Content = $("<div>", { class: "row flex-column px-2" });
+  let $OD2CofContent1 = $("<div>", { class: "col-12 fs-6 fw-bold userNName" });
+  let $OD2CofContent2 = $("<div>", { class: "col-12 typingIndicator text-muted", id: t_id });
+  $OD2CofContent1.text(userName);
+  $OD2CofContent2.text("Online");
+  $outerDiv3.text(getCurrentTime());
+  $(".userList").append($masterDiv);
+  $masterDiv.append($outerDiv1);
+  $masterDiv.append($outerDiv2);
+  $masterDiv.append($outerDiv3);
+  $outerDiv1.append($OD1Content);
+  $outerDiv2.append($OD2Content);
+  $OD2Content.append($OD2CofContent1);
+  $OD2Content.append($OD2CofContent2);
+};
+
 export let notification = (userName, event) => {
   let $notifyDiv = $("<div>", { class: "notification" });
   $notifyDiv.text(userName + " " + event + " the chat");
   $(".msgData").append($notifyDiv);
+};
+
+let getCurrentTime = () => {
+  let date = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  return date.slice(0, -3);
 };
