@@ -371,6 +371,10 @@ i {
   color: var(--icon);
 }
 
+.sendBtnDiv{
+  cursor: pointer;
+}
+
 .sendBtn {
   color: #4e426d;
 }

@@ -37,7 +37,7 @@ $(document).ready(function () {
   $(".typingArea").keypress(function (e) {
     if (e.which === 13 && !e.shiftKey) {
       e.preventDefault();
-      $(".sendBtn").click();
+      $(".sendBtnDiv").click();
       socket.emit("stopTyping", userName);
     }
   });
@@ -80,7 +80,7 @@ $(document).ready(function () {
     $(".imgPreviewBox").addClass("hide");
   });
 
-  $(".sendBtn").click(function () {
+  $(".sendBtnDiv").click(function () {
     appendMyChat($(".typingArea").val());
 
     if (compressedImgData) {
