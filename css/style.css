@@ -4,7 +4,7 @@
 }
 
 :root {
-  --bg:#f5f7fb;
+  --bg: #f5f7fb;
   --box: #fff;
   --icon: #212529;
   --gray: gray;
@@ -189,20 +189,27 @@ i {
   color: var(--icon);
 }
 
-.msgBox::-webkit-scrollbar {
-  display: none;
+.msgData::-webkit-scrollba
+  margin-top: 10px;
+  width: 5px;
 }
+
+.msgData::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: #aaaaaa;
+}
+
 .msgBox {
   height: 65vh;
-  padding: 20px;
+  padding: 10px 20px;
+}
+
+.msgData {
+  max-height: 64vh;
   overflow: scroll;
   overflow-x: hidden;
   scroll-behavior: smooth;
   transition: ease-in 0.2s;
-}
-
-.msgDiv {
-  /* transition: ease-in 0.2s; */
 }
 
 .img {
@@ -372,7 +379,7 @@ i {
   color: var(--icon);
 }
 
-.sendBtnDiv{
+.sendBtnDiv {
   cursor: pointer;
 }
 
@@ -394,19 +401,22 @@ i {
     height: 70vh;
   }
 
-  .fullBox{
+  .fullBox {
     height: 80vh;
     vertical-align: middle;
   }
 
-  .Box{
+  .Box {
     height: 70vh;
   }
 
-  .msgBox{
+  .msgBox {
     height: 60vh;
   }
 
+  .msgData {
+    max-height: 59vh;
+  }
   .user {
     margin: 0;
     padding: 0;

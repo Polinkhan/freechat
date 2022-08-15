@@ -4,7 +4,7 @@ import { getRandomUserName } from "./data.js";
 import { socket } from "./cliant.js";
 
 let scrollDown = () => {
-  $(".msgBox").animate({ scrollTop: $(".msgBox").get(0).scrollHeight }, 0);
+  $(".msgData").animate({ scrollTop: $(".msgData").get(0).scrollHeight }, 0);
 };
 
 $(document).ready(function () {
